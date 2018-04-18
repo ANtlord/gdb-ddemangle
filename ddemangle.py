@@ -28,7 +28,8 @@ class DdemangleFilter:
             return
         frame_filters[self.name] = self
         self.pipe = Popen(
-            EXECUTABLE, stdout=PIPE, stdin=PIPE, stderr=STDOUT
+            EXECUTABLE, stdout=PIPE, stdin=PIPE, stderr=STDOUT,
+            universal_newlines=True
         )
 
     def filter(self, iters: Iterator[Frame]) -> Iterator[Frame]:
@@ -45,7 +46,8 @@ class DdemangleFrameDecorator(FrameDecorator):
         res = super().function()
 
         if res.startswith('_D4'):
-            res = self.pipe.communicate(input=res.encode())[0].decode()[:-1]
+            print(res.encode(), file=self.pipe.stdin, flush=True)
+            res = self.pipe.stdout.readline()[2:-2]
         return res
 
 
