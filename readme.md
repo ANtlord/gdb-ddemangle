@@ -16,9 +16,17 @@ Helps to demangle traceback debugging an application that is written in D.
   [gdb-colour-filter](https://github.com/daskol/gdb-colour-filter) add the line
   above `source .gdb/gdb-colour-filter/colour_filter.py`
 
-
-
 ## Check Python version
 
 * Run `gdb`
 * Run `python print(sys.verion)` in GDB
+
+## Result
+
+### Before
+
+![Before](https://github.com/ANtlord/gdb-ddemangle/before.png)
+
+### After
+
+![After](https://github.com/ANtlord/gdb-ddemangle/after.png)
