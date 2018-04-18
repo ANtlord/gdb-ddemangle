@@ -25,8 +25,8 @@ Helps to demangle traceback debugging an application that is written in D.
 
 ### Before
 
-![Before](https://github.com/ANtlord/gdb-ddemangle/before.png)
+![Before](before.png)
 
 ### After
 
-![After](https://github.com/ANtlord/gdb-ddemangle/after.png)
+![After](after.png)
