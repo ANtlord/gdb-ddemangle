@@ -44,6 +44,8 @@ class DdemangleFrameDecorator(FrameDecorator):
     def function(self):
         """Changes function name using Ddemangle if it starts with _D4"""
         res = super().function()
+        if isinstance(res, int):
+            return res
 
         if res.startswith('_D4'):
             print(res.encode(), file=self.pipe.stdin, flush=True)
