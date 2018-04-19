@@ -12,9 +12,9 @@ Helps to demangle traceback debugging an application that is written in D.
 * `mkdir ~/.gdb/ && cd ~/.gdb`
 * `git clone https://github.com/ANtlord/gdb-ddemangle`
 * Create a file `.gdbinit` if it doesn't exist yet
-* Add `source .gdb/gdb-ddemangle/ddemangle.py`. If you use
-  [gdb-colour-filter](https://github.com/daskol/gdb-colour-filter) add the line
-  above `source .gdb/gdb-colour-filter/colour_filter.py`
+* Add `source .gdb/gdb-ddemangle/ddemangle.py`. 
+
+Hint: you can also use [gdb-colour-filter](https://github.com/daskol/gdb-colour-filter)
 
 ## Check Python version
 
