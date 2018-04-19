@@ -24,7 +24,7 @@ class DdemangleFilter:
             self.enabled = enabled
         else:
             self.enabled = False
-            print(f'{YELLOW}{HELP_MESSAGE}{END}')
+            print("%s%s%s" % (YELLOW + HELP_MESSAGE + END))
             return
         frame_filters[self.name] = self
         self.pipe = Popen(
