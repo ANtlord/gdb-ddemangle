@@ -18,7 +18,7 @@ def is_mangled_d_symbol(symbol: str) -> bool:
     return any(symbol.startswith(x) for x in HEADS)
 
 
-class DemangleController:
+class DdemangleController:
     _instance = None
 
     def __new__(cls):
@@ -76,7 +76,7 @@ def try_get_function_name(with_address: int) -> str:
 class DdemangleFrameDecorator(FrameDecorator):
     def __init__(self, fobj: Frame):
         super().__init__(fobj)
-        self.demangleController = DemangleController()
+        self.demangleController = DdemangleController()
 
     def function(self):
         """Changes function name using Ddemangle if it starts with _D4, _D3"""
