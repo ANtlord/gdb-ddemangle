@@ -11,6 +11,7 @@ Helps to demangle traceback debugging an application that is written in D.
 
 * `mkdir ~/.gdb/ && cd ~/.gdb`
 * `git clone https://github.com/ANtlord/gdb-ddemangle`
+* `cd gdb-ddemangle && make` in order to create binary that demangles D symbols
 * Create a file `.gdbinit` if it doesn't exist yet
 * Add `source .gdb/gdb-ddemangle/ddemangle.py`. If you use
   [gdb-colour-filter](https://github.com/daskol/gdb-colour-filter) add the line

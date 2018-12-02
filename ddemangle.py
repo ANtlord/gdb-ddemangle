@@ -1,7 +1,5 @@
 import ctypes
 import os
-import shutil
-from subprocess import Popen, PIPE, STDOUT
 from typing import Iterator
 from gdb import Frame
 from gdb import frame_filters
@@ -18,21 +16,10 @@ module = ctypes.cdll.LoadLibrary(LIB)
 module.dem.restype = ctypes.c_char_p
 module.dem.argtypes = [ctypes.c_char_p]
 
-class DdemangleController:
-    _instance = None
-
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-        return cls._instance
-
-    def demangle(self, data: str) -> str:
-        return module.dem(data)
-
 
 class DdemangleFilter:
     """
-    Helps to demangle traceback debugging an application that is written in D.
+    Demangles call stack of an application that is written in D.
     """
     def __init__(self, name='ddemangle-filter', priority=0, enabled=True):
         self.name = name
@@ -57,12 +44,8 @@ def try_get_function_name(with_address: int) -> str:
 
 
 class DdemangleFrameDecorator(FrameDecorator):
-    def __init__(self, fobj: Frame):
-        super().__init__(fobj)
-        self.demangleController = DdemangleController()
-
     def function(self):
-        """Changes function name using Ddemangle if it starts with _D4, _D3"""
+        """Demangles function name external binary library."""
         function_symbol = super().function()
         if isinstance(function_symbol, int):
             try:
